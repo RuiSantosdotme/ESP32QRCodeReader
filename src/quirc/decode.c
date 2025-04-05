@@ -933,7 +933,7 @@ quirc_decode_error_t quirc_decode(const struct quirc_code *code,
                                   struct quirc_data *data)
 {
   quirc_decode_error_t err;
-  struct datastream *ds = ps_malloc(sizeof(struct datastream));
+  struct datastream *ds = malloc(sizeof(struct datastream));
 
   if ((code->size - 17) % 4)
   {
