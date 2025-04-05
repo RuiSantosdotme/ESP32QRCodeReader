@@ -4,6 +4,8 @@
  */
 
 #include "collections.h"
+#include <stdlib.h>
+#include <string.h>
 #define CHAR_BITS (sizeof(char) * 8)
 #define CHAR_MASK (CHAR_BITS - 1)
 #define CHAR_SHIFT IM_LOG2(CHAR_MASK)
@@ -17,12 +19,12 @@ void lifo_alloc(lifo_t *ptr, size_t size, size_t data_len)
   ptr->len = 0;
   ptr->size = size;
   ptr->data_len = data_len;
-  ptr->data = (char *)ps_malloc(size * data_len);
+  ptr->data = (char *)malloc(size * data_len);
 }
 
 void lifo_alloc_all(lifo_t *ptr, size_t *size, size_t data_len)
 {
-  ptr->data = (char *)ps_malloc(255);
+  ptr->data = (char *)malloc(255);
   ptr->data_len = data_len;
   ptr->size = 255 / data_len;
   ptr->len = 0;
